@@ -1,18 +1,17 @@
 import env from 'dotenv';
-import AppError from '../errors/ApiError';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
+import routes from './routers';
+import AppError from '../errors/ApiError';
 import '../typeorm';
 env.config();
-
-import router from './routers/';
 
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors);
+app.use(cors());
 app.use(express.json());
-app.use('/api', router);
+app.use(routes);
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof AppError) {
@@ -21,6 +20,7 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
       message: err.message,
     });
   }
+  console.error(err.message);
   return res.status(500).json({
     status: 'error',
     message: 'Internal server error',
