@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('products')
 export default class Product {
@@ -14,9 +20,9 @@ export default class Product {
   @Column('int')
   quantity: number;
 
-  @Column('timestamp')
+  @CreateDateColumn()
   created_at: Date;
 
-  @Column('timestamp')
+  @UpdateDateColumn()
   updated_at: Date;
 }
