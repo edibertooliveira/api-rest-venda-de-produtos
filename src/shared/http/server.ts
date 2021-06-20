@@ -13,7 +13,7 @@ app.use(cors);
 app.use(express.json());
 app.use('/api', router);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       status: 'error',
