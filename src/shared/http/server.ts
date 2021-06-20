@@ -1,5 +1,6 @@
 import env from 'dotenv';
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import cors from 'cors';
 import routes from './routers';
 import AppError from '../errors/ApiError';
