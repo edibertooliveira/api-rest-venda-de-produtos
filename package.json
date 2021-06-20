@@ -1,0 +1,21 @@
+{
+  "name": "api-vendas",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Ediberto BO",
+  "scripts": {
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+    "lint": "eslint . --ext .ts --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.29.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.4"
+  }
+}
