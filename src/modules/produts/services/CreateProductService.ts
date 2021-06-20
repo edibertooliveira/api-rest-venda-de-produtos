@@ -1,6 +1,6 @@
 import AppError from '../../../shared/errors/ApiError';
 import { getCustomRepository } from 'typeorm';
-import { ProductRepository } from '../typeorm/repositories/productsRepositories';
+import { ProductRepository } from '../typeorm/repositories/productsRepository';
 import Product from '../typeorm/entities/Product';
 interface IRequest {
   name: string;
