@@ -18,12 +18,11 @@ export default class UpdateProductService {
   }: IRequest): Promise<Product> {
     const productRepository = getCustomRepository(ProductRepository);
     const productExists = await productRepository.findByName(name);
+    const product = await productRepository.findOne(id);
 
-    if (productExists) {
+    if (productExists && product?.id !== id) {
       throw new AppError('There is already one product with this name', 400);
     }
-
-    const product = await productRepository.findOne(id);
 
     if (!product) {
       throw new AppError('Product not found', 404);

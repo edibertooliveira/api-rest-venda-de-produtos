@@ -11,7 +11,7 @@ export default class DeleteProductService {
     const productRepository = getCustomRepository(ProductRepository);
     const productExists = await productRepository.findOne(id);
 
-    if (productExists) {
+    if (!productExists) {
       throw new AppError('There is already one product with this name', 400);
     }
 
