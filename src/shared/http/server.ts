@@ -2,6 +2,7 @@ import env from 'dotenv';
 import AppError from '../errors/ApiError';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
+import '../typeorm';
 env.config();
 
 import router from './routers/';
