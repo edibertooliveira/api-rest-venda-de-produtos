@@ -1,13 +1,13 @@
 import CreateProductService from './CreateProductService';
 import DeleteProductService from './DeleteProductService';
-import ListProductService from './ListProductService';
+import ListProductsService from './ListProductsService';
 import ShowProductService from './ShowProductService';
 import UpdateProductService from './UpdateProductServece';
 
 export {
   CreateProductService,
   DeleteProductService,
-  ListProductService,
+  ListProductsService,
   ShowProductService,
   UpdateProductService,
 };

@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import {
   CreateUserService,
   DeleteUserService,
-  ListUserService,
+  ListUsersService,
   ShowUserService,
   UpdateUserService,
 } from '../services/';
 
 export default class UsersController {
   public async index(_req: Request, res: Response): Promise<Response> {
-    const listUsers = new ListUserService();
+    const listUsers = new ListUsersService();
     const users = await listUsers.execute();
     return res.status(200).json(users);
   }
