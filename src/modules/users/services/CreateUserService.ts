@@ -1,8 +1,9 @@
 import AppError from '../../../shared/errors/ApiError';
 import { getCustomRepository } from 'typeorm';
-import { hash } from 'bcryptjs';
+import { hash, compare } from 'bcryptjs';
 import { UserRepository } from '../typeorm/repositories/UsersRepository';
 import User from '../typeorm/entities/User';
+
 interface IRequest {
   name: string;
   email: string;
