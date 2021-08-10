@@ -8,7 +8,7 @@ import uploadConfig from '../../../config/upload';
 
 interface IRequest {
   user_Id: string;
-  avatarFilename: string;
+  avatarFilename?: string;
 }
 
 export default class UpdateUserAvatarService {
@@ -26,7 +26,7 @@ export default class UpdateUserAvatarService {
       }
     }
 
-    user.avatar = avatarFilename;
+    user.avatar = avatarFilename || '';
     await userRepository.update(user_Id, user);
     return user;
   }
