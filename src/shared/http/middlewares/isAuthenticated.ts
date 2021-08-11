@@ -9,6 +9,7 @@ interface ITokenPayload {
   sub: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function isAuthenticated(
   req: Request,
   _res: Response,
