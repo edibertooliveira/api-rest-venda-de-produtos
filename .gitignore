@@ -5,7 +5,6 @@ build/
 temp/
 .env
 coverage
-ormconfig.js
 dist
 
 uploads/*
