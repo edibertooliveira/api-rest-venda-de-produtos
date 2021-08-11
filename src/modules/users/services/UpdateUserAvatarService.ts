@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { getCustomRepository } from 'typeorm';
 import AppError from '../../../shared/errors/ApiError';
-import { UserRepository } from '../typeorm/repositories/UsersRepository';
+import { UsersRepository } from '../typeorm/repositories/UsersRepository';
 import User from '../typeorm/entities/User';
 import uploadConfig from '../../../config/upload';
 
@@ -13,8 +13,8 @@ interface IRequest {
 
 export default class UpdateUserAvatarService {
   public async execute({ user_Id, avatarFilename }: IRequest): Promise<User> {
-    const userRepository = getCustomRepository(UserRepository);
-    const user = await userRepository.findById(user_Id);
+    const usersRepository = getCustomRepository(UsersRepository);
+    const user = await usersRepository.findById(user_Id);
     if (!user) {
       throw new AppError('user not found', 404);
     }
@@ -27,7 +27,7 @@ export default class UpdateUserAvatarService {
     }
 
     user.avatar = avatarFilename || '';
-    await userRepository.update(user_Id, user);
+    await usersRepository.update(user_Id, user);
     return user;
   }
 }

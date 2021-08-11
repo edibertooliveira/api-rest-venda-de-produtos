@@ -1,7 +1,7 @@
 import AppError from '../../../shared/errors/ApiError';
 import { getCustomRepository } from 'typeorm';
-import { UserRepository } from '../typeorm/repositories/UsersRepository';
-import { UserTokensRepository } from '@modules/users/typeorm/repositories/UserTokensRepository';
+import { UsersRepository } from '../typeorm/repositories/UsersRepository';
+import { UsersTokensRepository } from '@modules/users/typeorm/repositories/UsersTokensRepository';
 import EtherealMail from '@config/mail/EtherealMail';
 import path from 'path';
 interface IRequest {
@@ -10,12 +10,12 @@ interface IRequest {
 
 export default class SendForgotPasswordEmailService {
   public async execute({ email }: IRequest): Promise<void> {
-    const userRepository = getCustomRepository(UserRepository);
-    const userTokensRepository = getCustomRepository(UserTokensRepository);
-    const user = await userRepository.findByEmail(email);
+    const usersRepository = getCustomRepository(UsersRepository);
+    const usersTokensRepository = getCustomRepository(UsersTokensRepository);
+    const user = await usersRepository.findByEmail(email);
     if (!user) throw new AppError('User does not exists.');
 
-    const { token } = await userTokensRepository.generate(user.id);
+    const { token } = await usersTokensRepository.generate(user.id);
     const forgotPasswordTemplate = path.resolve(
       __dirname,
       '..',
@@ -30,7 +30,7 @@ export default class SendForgotPasswordEmailService {
         file: forgotPasswordTemplate,
         variables: {
           name: user.name,
-          link: `http://localhost:3000/reset_password?token=${token}`,
+          link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
         },
       },
     });

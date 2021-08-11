@@ -1,28 +1,27 @@
 import {
-  Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
+  JoinColumn,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Customer from '@modules/custormers/typeorm/entities/Customer';
 import OrdersProducts from '@modules/orders/typeorm/entities/OrdersProducts';
 
-@Entity('products')
-export default class Product {
+@Entity('orders')
+export default class Order {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  name: string;
+  @ManyToOne(() => Customer)
+  @JoinColumn({ name: 'customer_id' })
+  customer: Customer;
 
-  @Column('decimal')
-  price: number;
-
-  @Column('int')
-  quantity: number;
-
-  @OneToMany(() => OrdersProducts, order_products => order_products.product)
+  @OneToMany(() => OrdersProducts, order_products => order_products.order, {
+    cascade: true,
+  })
   order_products: OrdersProducts[];
 
   @CreateDateColumn()

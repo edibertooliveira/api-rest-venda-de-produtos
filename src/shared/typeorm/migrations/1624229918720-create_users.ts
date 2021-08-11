@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class createUsers1624229918720 implements MigrationInterface {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public async up(queryRunner: QueryRunner): Promise<void> {
     new Table({
       name: 'users',

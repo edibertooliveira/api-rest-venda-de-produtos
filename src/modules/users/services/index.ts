@@ -4,6 +4,8 @@ import ListUsersService from './ListUsersService';
 import UpdateUserAvatarService from './UpdateUserAvatarService';
 import SendForgotPasswordEmailService from './SendForgotPasswordEmailService';
 import ResetPasswordService from './ResetPasswordService';
+import UpdateProfileService from './UpdateProfileService';
+import ShowProfileService from './ShowProfileService';
 
 export {
   CreateUserService,
@@ -12,4 +14,6 @@ export {
   UpdateUserAvatarService,
   SendForgotPasswordEmailService,
   ResetPasswordService,
+  UpdateProfileService,
+  ShowProfileService,
 };

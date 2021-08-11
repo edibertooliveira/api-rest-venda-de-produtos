@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { SessionsController } from '../controller/';
+import { SessionsController } from '../controllers/';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 const signRouter = Router();
@@ -10,7 +10,7 @@ signRouter.post(
   celebrate({
     [Segments.BODY]: {
       email: Joi.string().email().required(),
-      password: Joi.string().length(8).required(),
+      password: Joi.string().min(8).required(),
     },
   }),
   sessionsController.login,
