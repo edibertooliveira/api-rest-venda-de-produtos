@@ -20,7 +20,7 @@
   </a>
 </p>
 
-# Api Venda de produtos
+# API rest Venda de produtos
 
 # Contexto
 Este projeto trata-se de uma ferramenta de back-office para operações de venda ao cliente cadastrado.
